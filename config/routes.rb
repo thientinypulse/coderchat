@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get 'messages' => 'messages#index'
   get 'messages/sent' => 'messages#sent'
   get 'messages/new' => 'messages#new'
-  get 'messages/send' => 'messages#sending'
+  post 'messages' => 'messages#sending'
 
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.

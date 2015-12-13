@@ -32,15 +32,18 @@ class FriendsController < ApplicationController
   end
 
   def myfriend
+
+
     user = current_user
     friends = Friend.where(:fromuser_id => user.id )
-    @users = []
+    # @users = []
+    #
+    # friends.each do |friend|
+    #
+    #   @users << User.find(friend.touser_id)
+    #
+    # end
 
-    friends.each do |friend|
-
-      @users << User.find(friend.touser_id)
-
-    end
-
+    @users = user.my_friends
   end
 end

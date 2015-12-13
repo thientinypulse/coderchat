@@ -1,2 +1,17 @@
 <%= render partial: 'header_bar' %>
-sent
+
+<table class="table table-striped">
+  <thead>
+    <tr> <th>#</th> <th>Sent to</th> <th>Content</th> <th>At</th> </tr>
+  </thead>
+  <tbody>
+  <% @messages.each do |message, index| %>
+    <tr>
+      <th scope="row"><%= index %> </th>
+      <td><%= User.find(message.recipient_id).email %></td>
+      <td><%= message.title %></td>
+      <td>@<%= message.created_at %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
