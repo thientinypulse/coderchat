@@ -8,6 +8,12 @@ class FriendsController < ApplicationController
     friend_id = params[:friend_id]
     my_id = session[:user_id]
 
+    if Friend.where(:fromuser_id => my_id, :touser_id => friend_id).present?
+      flash[:warning] = 'You are friends together for a long time!'
+      redirect_to :friends_index
+      return
+    end
+
     friend = Friend.new
     friend.fromuser_id = my_id
     friend.touser_id = friend_id
@@ -20,11 +26,21 @@ class FriendsController < ApplicationController
 
     friend.save!
 
-    render 'myfriend'
+    flash[:success] = 'Successfully add more friend!'
+    redirect_to :friends_myfriend
 
   end
 
   def myfriend
-    
+    user = current_user
+    friends = Friend.where(:fromuser_id => user.id )
+    @users = []
+
+    friends.each do |friend|
+
+      @users << User.find(friend.touser_id)
+
+    end
+
   end
 end

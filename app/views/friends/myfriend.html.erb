@@ -1,2 +1,10 @@
 <%= render partial: 'messages/header_bar' %>
-myfriend
+
+<div class="container users-index">
+  <% @users.in_groups_of(3) do |group| %>
+      <div class="row">
+        <%= render partial: 'friend', collection: group.compact %>
+      </div>
+  <% end %>
+
+</div>
