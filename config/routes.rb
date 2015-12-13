@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  get 'friends/index'
+  get 'friends/addfriend'
+
   get 'messages/index'
 
   get 'sessions/create'
