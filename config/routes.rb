@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'messages/index'
+
   get 'sessions/create'
 
   root 'welcome#index'
@@ -9,6 +11,10 @@ Rails.application.routes.draw do
   post 'login' => "sessions#create"
   get 'signout' => "sessions#destroy"
 
+  get 'messages' => 'messages#index'
+  get 'messages/sent' => 'messages#sent'
+  get 'messages/new' => 'messages#new'
+  get 'messages/send' => 'messages#sending'
 
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.

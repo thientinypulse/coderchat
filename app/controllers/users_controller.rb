@@ -6,10 +6,7 @@ class UsersController < ApplicationController
   end
 
   def index
-
       @users = User.all.shuffle
-
-
   end
 
   def create
