@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   get 'friends/index'
-  get 'friends/addfriend'
+  get 'friends/addfriend/:friend_id' => 'friends#addfriend', as: :friends_addfriend
+  get 'friends/myfriend'
 
   get 'messages/index'
 
