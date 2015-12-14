@@ -1,0 +1,12 @@
+<%= render partial: 'header_bar' %>
+
+<div>
+  <address>
+    <strong>From: </strong> <%= @sender.name + '<' + @sender.email + '>' %> <br>
+    <strong>Title: </strong> <%= @message.title %> <br>
+    <strong>Content:</strong><br>
+    <%= @message.content %> <br>
+    <hr>
+    <a class="btn btn-primary" href=<%= messages_path %> >Back</a>
+  </address>
+</div>

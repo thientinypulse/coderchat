@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'messages/sent' => 'messages#sent'
   get 'messages/new' => 'messages#new'
   post 'messages' => 'messages#sending'
+  get 'messages/:message_id/content' => 'messages#content', as: :messages_content
 
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,9 +1,16 @@
 class MessagesController < ApplicationController
   def index
+    @messages = Message.where(recipient_id: session[:user_id]).order(created_at: :desc)
+    new_message_count = 0
+    if @messages.map{|message| message.status}.include? false
+      new_message_count += 1
+    end
+    flash[:success] = "You got #{new_message_count} new messages!"
+
   end
 
   def sent
-    @messages = Message.where( sender_id: session[:user_id]).order(created_at: :desc)
+    @messages = Message.where(sender_id: session[:user_id]).order(created_at: :desc)
   end
 
   def new
@@ -26,4 +33,16 @@ class MessagesController < ApplicationController
     redirect_to :messages_sent
   end
 
+  def content
+    message_id = params[:message_id]
+    @message = Message.find(message_id)
+    # @message.status = !@message.status
+    @sender = User.find(@message.sender_id)
+
+    if @message.status == true
+      @message.content = ''
+      flash[:warning] = "This message has been read by the recipient!"
+    end
+    Message.update(message_id, :status => true)
+  end
 end

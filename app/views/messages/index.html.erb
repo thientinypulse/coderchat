@@ -1,2 +1,24 @@
 <%= render partial: 'header_bar' %>
-inbox
+
+<div class="page-header"><h1>Receive messages</h1></div>
+
+<table class="table">
+  <thead>
+  <tr> <th>#</th> <th>From</th> <th>Content</th> <th>At</th> <th>Status</th></tr>
+  </thead>
+  <tbody>
+  <% @messages.each_with_index do |message, index| %>
+    <% if message.status == false %>
+      <tr style="font-weight: bold">
+    <% else %>
+      <tr>
+    <% end %>
+        <th scope="row"><%= index + 1%> </th>
+        <td><%= User.find(message.sender_id).email %></td>
+        <td> <%= link_to message.title, messages_content_path(message.id) %></td>
+        <td><%= message.created_at %></td>
+        <td><%= message.status == true ? 'Read' : 'New' %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -9,7 +9,10 @@ class ApplicationController < ActionController::Base
   		User.find(session[:user_id])
   	else
   		nil
-  	end
+		end
+	rescue
+		session.delete(:user_id)
+		nil
   end
 
   def sign_in?

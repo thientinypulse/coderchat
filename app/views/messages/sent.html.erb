@@ -1,13 +1,13 @@
 <%= render partial: 'header_bar' %>
-
+<div class="page-header"><h1>Sent messages</h1></div>
 <table class="table table-striped">
   <thead>
     <tr> <th>#</th> <th>Sent to</th> <th>Content</th> <th>At</th> </tr>
   </thead>
   <tbody>
-  <% @messages.each do |message, index| %>
+  <% @messages.each_with_index do |message, index| %>
     <tr>
-      <th scope="row"><%= index %> </th>
+      <th scope="row"><%= index+1 %> </th>
       <td><%= User.find(message.recipient_id).email %></td>
       <td><%= message.title %></td>
       <td>@<%= message.created_at %></td>
