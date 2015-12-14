@@ -18,11 +18,7 @@
     </button>
     <!-- Nav Content -->
     <div class="collapse navbar-toggleable-xs" id="nav-content">
-      <% if current_user.nil? || current_user.image_url.empty? %>
-        <a class="navbar-brand" href="/messages"><%= image_tag 'snapchat-small' %></a>
-      <% else %>
-        <a class="navbar-brand" href="/messages"><%= image_tag current_user.image_url %></a>
-      <% end %>
+      <a class="navbar-brand" href="/messages"><%= image_tag 'snapchat-small' %></a>
       <ul class="nav navbar-nav">
         
       <% if sign_in? %>
