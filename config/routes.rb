@@ -21,7 +21,12 @@ Rails.application.routes.draw do
   post 'messages' => 'messages#sending'
   get 'messages/:message_id/content' => 'messages#content', as: :messages_content
 
+  post 'users/updateprofile' => 'users#updateprofile'
+  get 'users/profile' => 'users#profile'
+
+
   resources :users
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

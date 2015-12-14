@@ -1,5 +1,7 @@
 <%= render partial: 'messages/header_bar' %>
 
+<div class="page-header"><h1>My Friends</h1></div>
+
 <div class="container users-index">
   <% @users.in_groups_of(3) do |group| %>
       <div class="row">
