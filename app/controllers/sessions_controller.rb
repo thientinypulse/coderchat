@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   def new
     if sign_in?
-      redirect_to users_path
+      redirect_to messages_path
     else
   	 render "login"
     end
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
       flash[:sucsess] = 'Welcome to CoderChat!'
 
-  		redirect_to users_path
+  		redirect_to messages_path
   	else
       flash[:error] = 'Username or password is not correct!'
   		render "login"
