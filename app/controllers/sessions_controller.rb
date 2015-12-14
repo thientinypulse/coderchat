@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   	if(@existedUser && @existedUser.authenticate(params[:user][:password]))
       session[:user_id] = @existedUser.id
 
-      flash[:sucsess] = 'You are so awesome!'
+      flash[:sucsess] = 'Welcome to CoderChat!'
 
   		redirect_to users_path
   	else

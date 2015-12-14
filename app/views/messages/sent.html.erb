@@ -10,7 +10,7 @@
       <th scope="row"><%= index+1 %> </th>
       <td><%= User.find(message.recipient_id).email %></td>
       <td><%= message.title %></td>
-      <td>@<%= message.created_at %></td>
+      <td><%= message.created_at %></td>
     </tr>
   <% end %>
   </tbody>

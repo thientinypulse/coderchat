@@ -1,11 +1,12 @@
 class MessagesController < ApplicationController
+  before_action :require_login
   def index
     @messages = Message.where(recipient_id: session[:user_id]).order(created_at: :desc)
     new_message_count = 0
     if @messages.map{|message| message.status}.include? false
       new_message_count += 1
     end
-    flash[:success] = "You got #{new_message_count} new messages!"
+    flash[:success] = "You got #{new_message_count} new messages!" unless new_message_count==0
 
   end
 
